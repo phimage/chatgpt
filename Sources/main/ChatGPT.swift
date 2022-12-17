@@ -23,24 +23,37 @@ struct ChatGPT: AsyncParsableCommand {
     @Argument(help: "prompt text")
     var prompt: String?
 
+    func log(_ result: Result<ChatGTPResponse, Error>) {
+        switch result {
+        case .success(let response):
+            print(response.choices.map({$0.text}).joined(separator: "\n"))
+        case .failure(let error):
+            print(error)
+        }
+    }
+
     func run() async throws {
         let chat = ChatGPTAPI(token: token)
         if interactive {
+            print("Starting interactive mode:")
             var goOn = true
             while(goOn) {
-                let input = "stop" // TODO Read system input
-                if input == "stop" || input == "quit" || input == "exit" {
-                    goOn = false
+                if let input = readLine(), input != "stop" && input != "quit" && input != "exit" {
+                    let result = await chat.prompt(input)
+                    log(result)
                 } else {
-                    // TODO prompt
+                    goOn = false
                 }
             }
         } else if let prompt = prompt {
             let result = await chat.prompt(prompt)
-            // TODO display result
+            log(result)
         } else {
-            // Read system input one time
-            // TODO prompt
+            print("Fill a prompt:")
+            if let prompt = readLine() {
+                let result = await chat.prompt(prompt)
+                log(result)
+            }
         }
     }
 
