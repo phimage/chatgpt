@@ -16,7 +16,7 @@ struct ChatGPT: AsyncParsableCommand {
     @Option(name: .long, help: "The maximum number of tokens to generate in the completion. Default 4000")
     var maxTokens: Int = 4000
 
-    @Option(name: [.long, .short], help: "What sampling temperature to use. Higher values means the model will take more risks. Try 0.9 for more creative applications, and 0 (argmax sampling) for ones with a well-defined answer. Default 1.0")
+    @Option(name: [.long, .short], help: "What sampling temperature to use. Higher values means the model will take more risks. Try 0.9 for more creative applications, and 0 (argmax sampling) for ones with a well-defined answer. Default 1.0") // swiftlint:disable:this line_length
     var temperature: Float = 1
 
     @Argument(help: "prompt text")
