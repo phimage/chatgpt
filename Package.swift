@@ -11,15 +11,13 @@ let package = Package(
             targets: ["chatgpt"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0"),
-        .package(url: "https://github.com/phimage/XcodeProjKit.git", from: "3.0.3")
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.0.0")
     ],
     targets: [
         .executableTarget(
             name: "chatgpt",
             dependencies: [
-                .product(name: "ArgumentParser", package: "swift-argument-parser"),
-                "XcodeProjKit"],
+                .product(name: "ArgumentParser", package: "swift-argument-parser")],
             path: "Sources/main"
         )
     ]
