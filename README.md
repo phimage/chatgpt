@@ -11,8 +11,16 @@ My cli tool description
 ## Usage
 
 ```bash
-    chatgpt --help
+    chatgpt --token "token from https://beta.openai.com/account/api-keys" "your prompt"
 ```
+
+### Interactive mode
+
+```bash
+    chatgpt --token "token from https://beta.openai.com/account/api-keys" --interactive
+```
+
+"stop", "quit" or "exit" to stop
 
 ## Install
 
