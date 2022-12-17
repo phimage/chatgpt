@@ -1,0 +1,31 @@
+name: build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  lint:
+    name: Lint check
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: swiftlint --strict
+
+  build_and_test:
+    name: Build and Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+    - uses: actions/checkout@v3
+    - uses: swift-actions/setup-swift@v1
+      with:
+        swift-version: "5.7"
+    - name: Build
+      run: ./build.sh
+    - name: Run tests
+      run: ./test.sh
