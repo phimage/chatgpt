@@ -27,5 +27,3 @@ jobs:
         swift-version: "5.7"
     - name: Build
       run: ./build.sh
-    - name: Run tests
-      run: ./test.sh

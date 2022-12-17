@@ -5,7 +5,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then  # Mac OSX
 else
     cmd=.build/release/chatgpt
 fi
-file=.build/checkouts/XcodeProjKit/
 
 if [[ ! -f "$cmd" ]]
 then
