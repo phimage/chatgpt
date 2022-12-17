@@ -24,13 +24,7 @@ My cli tool description
 
 ## Install
 
-Just download from release if any, or build it (and move it to `PATH`)
-
-or alternatively execute install script
-
-```bash
-sudo curl -sL https://phimage.github.io/chatgpt/install.sh | bash
-```
+build it (and move it to `PATH`)
 
 ## Build yourself
 
