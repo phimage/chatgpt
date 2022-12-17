@@ -36,7 +36,7 @@ class ChatGPTAPI {
                 temperature: Float = 1.0,
                 model: String = "text-davinci-003") async -> Result<ChatGTPResponse, Error> {
 
-        let body: [String : Any] = [
+        let body: [String: Any] = [
             "model": model,
             "prompt": text,
             "max_tokens": maxTokens,
@@ -53,8 +53,7 @@ class ChatGPTAPI {
             let (data, _) = try await URLSession.shared.data(for: urlRequest)
             let parsedData = try JSONDecoder().decode(ChatGTPResponse.self, from: data)
             return .success(parsedData)
-        }
-        catch {
+        } catch {
             return .failure(error)
         }
     }
