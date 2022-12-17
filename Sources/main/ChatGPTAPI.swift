@@ -53,7 +53,7 @@ class ChatGPTAPI {
             urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
             urlRequest.httpMethod = "POST"
 
-            let (data, _) = try await URLSession.shared.data(for: urlRequest)
+            let (data, _): (Data, URLResponse) = try await URLSession.shared.data(for: urlRequest)
             let parsedData = try JSONDecoder().decode(ChatGTPResponse.self, from: data)
             return .success(parsedData)
         } catch {
